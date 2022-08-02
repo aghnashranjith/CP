@@ -1,3 +1,3 @@
 # CP
-This is where I practice CP
-Contains coding contest solutions as well
+This is where I practice CP.
+It contains coding contest solutions as well
