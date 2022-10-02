@@ -20,46 +20,35 @@ class Solution{
     vector<int> sortA1ByA2(vector<int> A1, int N, vector<int> A2, int M) 
     {
         //Your code here
-        // map<int,int> freq;
-        // for(int i=0; i<N; ++i)
-        // {
-        //     freq[A1[i]]++;
-        //     // cout<<freq[A1[i]];
-        // }
-        // map<int, int>:: iterator it;
-        // for(it = freq.begin(); it!=freq.end(); ++it)
-        // {
-        //     cout<<it->first<<" "<<it->second<<endl;
-        // }
-        // cout<<endl;
+        sort(A1.begin(), A1.end());
+        unordered_map<int, int> freq;
         vector<int> res;
-        // int size = 0;
-        // for(int i=0; i<M; i++)
-        // {
-        //     if(freq[A2[i]]!=0)
-        //     {
-        //         while(freq[A2[i]]--)
-        //         {
-        //             res.push_back(A2[i]);
-        //             size++;
-        //         }
-        //     }
-        // }
         
-        // if(size < N)
-        // {
-        //     for(auto x : freq)
-        //     {
-        //         if(x.second!=0)
-        //         {
-        //             while(x.second--)
-        //             {
-        //                 res.push_back(x.first);
-        //             }
-        //         }
-        //     }
-        // }
+        for(int i=0; i<N; i++)
+        {
+            freq[A1[i]]++;
+        }
         
+        for(int i=0; i<M; i++)
+        {
+            int x = freq[A2[i]];
+            while(x--)
+            {
+                res.push_back(A2[i]);
+            }
+        }
+        
+        freq.clear();
+        for(auto i: res)
+        {
+            freq[i]++;
+        }
+        
+        for(int i=0; i<N; i++)
+        {
+            if(freq.find(A1[i]) == freq.end())
+                res.push_back(A1[i]);
+        }
         return res;
     } 
 };
