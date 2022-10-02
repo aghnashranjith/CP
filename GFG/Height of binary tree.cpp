@@ -98,31 +98,17 @@ struct Node
 */
 class Solution{
     public:
-    int depth;
-    void dfs(Node* node,int count)
-    {
-        if(node==NULL)
-        {
-            return;
-        }
-        else
-        {
-            count++;
-            if(count>depth)
-                depth = count;
-            dfs(node->left, count);
-            dfs(node->right, count);
-        }
-    }
     //Function to find the height of a binary tree.
     int height(struct Node* node){
-        // code here
-        if(node == NULL)
-        return 0;
-        depth = 0;
-        dfs(node, depth);
-        return depth;
+        // code here 
+        if(node==NULL)
+            return 0;
         
+        int left = height(node->left);
+        int right = height(node->right);
+        
+        int ans = max(left,right) + 1;
+        return ans;
     }
 };
 
